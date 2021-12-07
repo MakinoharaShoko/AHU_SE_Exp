@@ -19,7 +19,7 @@ app.use(bodyParser.json())
 process.on('uncaughtException',function(err){}) //监听未捕获的异常
 process.on('unhandledRejection',function(err,promise){}) //监听Promise没有被捕获的失败函数
 //StuStatus:库名
-//Stu：学生表 class：班级 magor：专业 school：学院
+//Stu：学生表 class：班级 major：专业 school：学院
 //DOT:退学时间 SOT:休学时间 RT：复学时间 AT：入学时间
 const MongoUrl = "mongodb://localhost:27017/";
 
