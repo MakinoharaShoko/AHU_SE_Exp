@@ -21,6 +21,7 @@ process.on('unhandledRejection',function(err,promise){}) //监听Promise没有�
 //StuStatus:库名
 //Stu：学生表 class：班级 major：专业 school：学院
 //DOT:退学时间 SOT:休学时间 RT：复学时间 AT：入学时间
+
 const MongoUrl = "mongodb://localhost:27017/";
 
 app.post('/getinfo',(req,res)=>{
