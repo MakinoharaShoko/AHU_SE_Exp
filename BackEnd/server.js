@@ -281,6 +281,18 @@ app.post('/delete',(req,res)=>{//body包含ID,table
     }
 })
 
-
+app.get('/getAllSchoolID',(req,res)=>{
+    MongoClient.connect(MongoUrl,(err,db)=>{
+        if(err) throw err;
+        let dbo = db.db('StuStatus');
+        dbo.collection('school').find().toArray((err,result)=>{
+            let ret = [];
+            for (let i = 0; i < result.length; i++) {
+                ret.push(result[i]);
+            }
+            res.send(ret);
+        })
+    })
+})
 
 app.listen(Port, () => console.log('服务器已就绪，运行在端口'+Port))//输出服务器启动信息
