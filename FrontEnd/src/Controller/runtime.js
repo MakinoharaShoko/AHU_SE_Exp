@@ -1,7 +1,13 @@
 let runtime ={
     currentPage:'school',
+    currentSchool:'',
+    currentMajor:'',
+    currentClass:'',
     host:'',
-    schoolList:[]
+    schoolList:[],
+    majorList:[],
+    classList:[],
+    studentList:[]
 }
 
 runtime.host = runtime.host=`http://${document.domain}:3001`
@@ -11,10 +17,10 @@ function setPostBody(body){
     let str = '';
     for (const bodyKey in body) {
         if(flag){
-            str = str+`${bodyKey}:${body[bodyKey]}`;
+            str = str+`${bodyKey}=${body[bodyKey]}`;
             flag = false
         }else {
-            str = str+`&${bodyKey}:${body[bodyKey]}`
+            str = str+`&${bodyKey}=${body[bodyKey]}`
         }
     }
     return str;
