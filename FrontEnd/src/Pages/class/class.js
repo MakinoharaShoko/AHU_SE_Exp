@@ -3,7 +3,7 @@ import {useState} from "react";
 import {runtime, setPostBody} from "../../Controller/runtime";
 import {Card} from "antd";
 
-const Class = ()=>{
+const Class = (props)=>{
     const [count,setCount] = useState(0);
     if(count === 0){
         getClassList();
@@ -19,7 +19,7 @@ const Class = ()=>{
                 }
             }
             let temp = <Card title={runtime.classList[classListKey].Name} extra={<a onClick={()=>{
-
+                gotoStudentList(runtime.classList[classListKey].ID)
             }}>More</a>} style={{ width: 300 }} className={"singleSchoolInfo"}>
                 {detail}
             </Card>
@@ -42,6 +42,12 @@ const Class = ()=>{
                 setCount(count+1);
             }
         }
+    }
+
+    function gotoStudentList(classID){
+        runtime.currentPage = 'student';
+        runtime.currentClass = classID;
+        props.setCurrentPage('student');
     }
 }
 

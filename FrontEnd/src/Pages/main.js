@@ -4,6 +4,7 @@ import {useState} from "react";
 import {runtime} from "../Controller/runtime";
 import Major from "./major/major";
 import Class from "./class/class";
+import Student from "./student/student";
 
 const Main = ()=>{
     const [currentPage,setCurrentPage] = useState(runtime.currentPage);
@@ -16,6 +17,9 @@ const Main = ()=>{
     }
     if(currentPage === 'class'){
         page = <Class setCurrentPage={setCurrentPage}/>
+    }
+    if(currentPage === 'student'){
+        page = <Student setCurrentPage={setCurrentPage}/>
     }
     return <div id={"main"}>
         <div id={"topBar"} className={"topBar"}>
