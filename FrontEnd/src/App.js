@@ -1,10 +1,11 @@
 import './App.css';
 import {Button} from "antd";
+import Main from "./Pages/main";
 
 function App() {
   return (
     <div className="App">
-        Ready for coding!
+        <Main/>
     </div>
   );
 }
