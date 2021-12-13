@@ -36,9 +36,11 @@ const Student = (props)=>{
     </div>
 
     function getStudentList(){
+        runtime.studentList=[];
         let req = new XMLHttpRequest();
         req.open('POST',runtime.host+'/getinfo/');
         let sendBody = {table:'class',ID:runtime.currentClass};
+        console.log(sendBody);
         req.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
         req.send(setPostBody(sendBody));
         req.onreadystatechange = ()=>{
