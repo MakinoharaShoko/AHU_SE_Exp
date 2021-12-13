@@ -195,7 +195,6 @@ app.post('/delete',(req,res)=>{//body包含ID,table
         MongoClient.connect(MongoUrl,(err,db)=>{
             if(err) throw err;
             let dbo=db.db('StuStatus');
-            delStu(ID)
             dbo.collection(table).deleteMany({ID:ID},(err,result)=>{
                 if(err) throw err;
                 returnMessage[table] = result;
@@ -239,6 +238,10 @@ app.post('/delete',(req,res)=>{//body包含ID,table
                     id[i] = result1[i].ID;
                 }
             })
+            if(id.length==0){
+                db.close();
+                res.send(returnMessage);
+            }
             dbo.collection(table).deleteMany({major_ID:ID},(err,result)=>{
                 if(err) throw err;
                 returnMessage[table] = result;
@@ -271,6 +274,10 @@ app.post('/delete',(req,res)=>{//body包含ID,table
                     id[i] = result1[i].ID;
                 }
             })
+            if(id.length==0){
+                db.close();
+                res.send(returnMessage);
+            }
             dbo.collection(table).deleteMany({school_ID:ID},(err,result)=>{
                 if(err) throw err;
                 returnMessage[table] = result;
