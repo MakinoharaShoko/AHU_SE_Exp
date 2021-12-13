@@ -19,7 +19,7 @@ const Delete = (props)=>{
         okText="是"
         cancelText="否"
     >
-        <a href="#"> 删除</a>
+        <a href="#" style={{margin:'0 0 0 10px'}}>删除</a>
     </Popconfirm>
 }
 
