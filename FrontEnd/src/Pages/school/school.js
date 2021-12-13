@@ -1,11 +1,15 @@
 import './school.css'
-import {useState} from "react";
-import {runtime} from "../../Controller/runtime";
+import {useEffect, useState} from "react";
+import {deleteOne, runtime} from "../../Controller/runtime";
 import {reRender} from "../../index";
 import {Card} from "antd";
+import Delete from "../../Components/Delete/Delete";
 
 const School = (props)=>{
     const [count,setCount] = useState(0);
+    useEffect(()=>{
+        getSchoolList();
+    })
     if(count === 0){
         getSchoolList();
     }
@@ -19,9 +23,15 @@ const School = (props)=>{
                     detail.push(temp)
                 }
             }
-            let tempDiv = <Card title={runtime.schoolList[i].Name} extra={<a onClick={()=>{
-                gotoMajor(runtime.schoolList[i].ID)
-            }}>More</a>} style={{ width: 300 }} className={"singleSchoolInfo"}>
+            let tempDiv = <Card title={runtime.schoolList[i].Name} extra={
+                <span>
+                    <a onClick={()=>{gotoMajor(runtime.schoolList[i].ID)}}>查看</a>
+                    <Delete confirm={()=>{deleteOne('school', runtime.schoolList[i].ID)
+                        setCount(count+1);}}/>
+                </span>
+
+
+            } style={{ width: 300 }} className={"singleSchoolInfo"}>
                 {detail}
             </Card>
             toShow.push(tempDiv);

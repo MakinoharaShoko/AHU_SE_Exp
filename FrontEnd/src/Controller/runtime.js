@@ -25,4 +25,13 @@ function setPostBody(body){
     }
     return str;
 }
-export {runtime,setPostBody};
+
+function deleteOne(table,ID){
+    let deleteReq = new XMLHttpRequest();
+    deleteReq.open('POST',runtime.host+`/delete`);
+    let body = setPostBody({table:table,ID:ID});
+    deleteReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    deleteReq.send(body);
+}
+
+export {runtime,setPostBody,deleteOne};

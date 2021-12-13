@@ -1,7 +1,7 @@
 import { Form, Input, Button, Checkbox } from 'antd';
 import {runtime} from "../../Controller/runtime";
 
-const AddOther = () => {
+const AddOther = (props) => {
     const onFinish = (values) => {
         let body = '';
         body =`Name=${values.Name}&ID=${values.ID}&Description=${values.description}`;
@@ -18,6 +18,7 @@ const AddOther = () => {
         sendValue.open('POST',url);
         sendValue.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         sendValue.send(body);
+        props.closeFun();
     };
 
     const onFinishFailed = (errorInfo) => {

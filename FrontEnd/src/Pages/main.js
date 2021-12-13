@@ -6,7 +6,7 @@ import Major from "./major/major";
 import Class from "./class/class";
 import Student from "./student/student";
 import {AddOne, Return} from "@icon-park/react";
-import Insert from "../Components/Insert";
+import Insert from "../Components/Insert/Insert";
 
 const Main = ()=>{
     const [currentPage,setCurrentPage] = useState(runtime.currentPage);
