@@ -4,7 +4,7 @@ import {runtime} from "../../Controller/runtime";
 const AddOther = () => {
     const onFinish = (values) => {
         let body = '';
-        body =`Name=${values.Name}&ID=${values.ID}&description=${values.description}`;
+        body =`Name=${values.Name}&ID=${values.ID}&Description=${values.description}`;
         if(runtime.currentPage === "major"){
             body = body+`&school_ID=${runtime.currentSchool}`
         }else if(runtime.currentPage ==='class'){
