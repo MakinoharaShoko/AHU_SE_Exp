@@ -1,11 +1,15 @@
 import './major.css'
-import {useState} from "react";
-import {runtime} from "../../Controller/runtime";
+import {useEffect, useState} from "react";
+import {deleteOne, runtime} from "../../Controller/runtime";
 import {setPostBody} from "../../Controller/runtime";
 import {Card} from "antd";
+import Delete from "../../Components/Delete/Delete";
 
 const Major = (props)=>{
     const [count,setCount] = useState(0);
+    useEffect(()=>{
+        getMajorList();
+    })
     if(count === 0){
         getMajorList();
     }
@@ -19,9 +23,14 @@ const Major = (props)=>{
                     detail.push(temp)
                 }
             }
-            let temp = <Card title={runtime.majorList[majorListKey].Name} extra={<a onClick={()=>{
-                gotoClassList(runtime.majorList[majorListKey].ID);
-            }}>More</a>} style={{ width: 300 }} className={"singleSchoolInfo"}>
+            let temp = <Card title={runtime.majorList[majorListKey].Name} extra={
+                <span>
+                    <a onClick={()=>{gotoClassList(runtime.majorList[majorListKey].ID);}}>查看</a>
+                    <Delete confirm={()=>{deleteOne('major', runtime.majorList[majorListKey].ID)
+                        setCount(count+1);}}/>
+                </span>
+
+            } style={{ width: 300 }} className={"singleSchoolInfo"}>
                 {detail}
             </Card>
             page.push(temp);

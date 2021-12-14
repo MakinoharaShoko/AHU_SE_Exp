@@ -1,10 +1,14 @@
 import './class.css'
-import {useState} from "react";
-import {runtime, setPostBody} from "../../Controller/runtime";
+import {useEffect, useState} from "react";
+import {deleteOne, runtime, setPostBody} from "../../Controller/runtime";
 import {Card} from "antd";
+import Delete from "../../Components/Delete/Delete";
 
 const Class = (props)=>{
     const [count,setCount] = useState(0);
+    useEffect(()=>{
+        getClassList();
+    })
     if(count === 0){
         getClassList();
     }
@@ -18,9 +22,13 @@ const Class = (props)=>{
                     detail.push(temp)
                 }
             }
-            let temp = <Card title={runtime.classList[classListKey].Name} extra={<a onClick={()=>{
-                gotoStudentList(runtime.classList[classListKey].ID)
-            }}>More</a>} style={{ width: 300 }} className={"singleSchoolInfo"}>
+            let temp = <Card title={runtime.classList[classListKey].Name} extra={
+                <span>
+                <a onClick={()=>{gotoStudentList(runtime.classList[classListKey].ID)}}>查看</a>
+                <Delete confirm={()=>{deleteOne('major', runtime.classList[classListKey].ID)
+                setCount(count+1);}}/>
+                </span>
+            } style={{ width: 300 }} className={"singleSchoolInfo"}>
                 {detail}
             </Card>
             page.push(temp);

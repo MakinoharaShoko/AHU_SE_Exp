@@ -1,11 +1,14 @@
 import './student.css'
 import {Descriptions, Button, Card} from 'antd';
-import {runtime, setPostBody} from "../../Controller/runtime";
-import {useState} from "react";
+import {deleteOne, runtime, setPostBody} from "../../Controller/runtime";
+import {useEffect, useState} from "react";
+import Delete from "../../Components/Delete/Delete";
 
 const Student = (props)=>{
     const [count,setCount] = useState(0)
-
+    useEffect(()=>{
+        getStudentList();
+    })
     if(count === 0){
         getStudentList();
     }
@@ -24,7 +27,9 @@ const Student = (props)=>{
                 bordered
                 title={runtime.studentList[studentListKey]['Name']}
                 size={'default'}
-                extra={<Button type="primary">Edit</Button>}
+                extra={<Delete confirm={()=>{
+                    deleteOne('Stu', runtime.studentList[studentListKey]['ID']);
+                    setCount(count+1);}}/>}
             >
                 {detail}
             </Descriptions>

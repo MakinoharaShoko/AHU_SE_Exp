@@ -20,7 +20,7 @@ const Insert = (props) => {
                 props.setOn(false)
             }
             }>
-                <CloseOne theme="outline" size="24" fill="#333"/>
+                <CloseOne theme="outline" size="30" fill="#333"/>
             </div>
             {page}
         </div>

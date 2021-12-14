@@ -1,13 +1,21 @@
 #insert{
     position: fixed;
     top: 0;
+    left: 0;
     z-index: 3;
     width: 100vw;
     height: 100vh;
-    padding: 10% 20% 10% 20%;
+    padding: 10% 30% 10% 30%;
     background-color: rgba(0,0,0,0.2);
 }
 
 .box{
     background-color: white;
+    padding: 20px 20px 20px 20px;
+    text-align: left;
+    display: flex;
+    flex-flow: column;
+    box-shadow: 2px 2px 7px rgba(0,0,0,0.2);
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 7px;
 }

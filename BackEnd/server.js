@@ -185,6 +185,7 @@ app.post('/delete',(req,res)=>{//body包含ID,table
             let dbo=db.db('StuStatus');
             dbo.collection(table).deleteMany({ID:ID},(err,result)=>{
                 if(err) throw err;
+                let temp = result;
                 db.close();
                 res.send('OK');
             })
