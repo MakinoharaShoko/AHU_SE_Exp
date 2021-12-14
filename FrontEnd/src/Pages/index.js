@@ -1,4 +1,4 @@
-import './main.css'
+import './index.css'
 import School from "./school/school";
 import {useState} from "react";
 import {runtime} from "../Controller/runtime";
@@ -8,7 +8,7 @@ import Student from "./student/student";
 import {AddOne, Return} from "@icon-park/react";
 import Insert from "../Components/Insert/Insert";
 
-const Main = ()=>{
+const Index = ()=>{
     const [currentPage,setCurrentPage] = useState(runtime.currentPage);
     const [addOn,setAddOn] = useState(false);
     let page = '';
@@ -63,4 +63,4 @@ const Main = ()=>{
     </div>;
 }
 
-export default Main;
+export default Index;

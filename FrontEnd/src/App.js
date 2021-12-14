@@ -1,11 +1,11 @@
 import './App.css';
 import {Button} from "antd";
-import Main from "./Pages/main";
+import Index from "./Pages";
 
 function App() {
   return (
     <div className="App">
-        <Main/>
+        <Index/>
     </div>
   );
 }
