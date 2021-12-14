@@ -6,9 +6,6 @@ import Delete from "../../Components/Delete/Delete";
 
 const Class = (props)=>{
     const [count,setCount] = useState(0);
-    useEffect(()=>{
-        getClassList();
-    })
     if(count === 0){
         getClassList();
     }
@@ -25,8 +22,8 @@ const Class = (props)=>{
             let temp = <Card title={runtime.classList[classListKey].Name} extra={
                 <span>
                 <a onClick={()=>{gotoStudentList(runtime.classList[classListKey].ID)}}>查看</a>
-                <Delete confirm={()=>{deleteOne('major', runtime.classList[classListKey].ID)
-                setCount(count+1);}}/>
+                <Delete confirm={()=>{deleteOne('class', runtime.classList[classListKey].ID)
+                    getClassList();}}/>
                 </span>
             } style={{ width: 300 }} className={"singleSchoolInfo"}>
                 {detail}

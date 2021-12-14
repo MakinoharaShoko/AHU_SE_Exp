@@ -6,9 +6,6 @@ import Delete from "../../Components/Delete/Delete";
 
 const Student = (props)=>{
     const [count,setCount] = useState(0)
-    useEffect(()=>{
-        getStudentList();
-    })
     if(count === 0){
         getStudentList();
     }
@@ -23,14 +20,11 @@ const Student = (props)=>{
                     detail.push(temp)
                 }
             }
-            let temp = <Descriptions
-                bordered
-                title={runtime.studentList[studentListKey]['Name']}
-                size={'default'}
+            let temp = <Descriptions bordered title={runtime.studentList[studentListKey]['Name']} size={'default'}
                 extra={<Delete confirm={()=>{
+                    console.log(runtime.studentList[studentListKey]['ID']);
                     deleteOne('Stu', runtime.studentList[studentListKey]['ID']);
-                    setCount(count+1);}}/>}
-            >
+                    getStudentList();}}/>} >
                 {detail}
             </Descriptions>
             page.push(temp);
