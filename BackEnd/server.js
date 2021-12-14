@@ -164,6 +164,7 @@ app.post('/upsert/*',(req,res)=>{//upsert包含ID  *为table
         let dbo = db.db('StuStatus');
         dbo.collection(table).updateMany({ID:info.ID},{$set:info},{upsert:true},(err,result)=>{
             if(err) throw err;
+            let temp = result;
             db.close();
             res.send('OK');
         });
