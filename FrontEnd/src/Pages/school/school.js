@@ -7,9 +7,6 @@ import Delete from "../../Components/Delete/Delete";
 
 const School = (props)=>{
     const [count,setCount] = useState(0);
-    useEffect(()=>{
-        getSchoolList();
-    })
     if(count === 0){
         getSchoolList();
     }
@@ -27,7 +24,7 @@ const School = (props)=>{
                 <span>
                     <a onClick={()=>{gotoMajor(runtime.schoolList[i].ID)}}>查看</a>
                     <Delete confirm={()=>{deleteOne('school', runtime.schoolList[i].ID)
-                        setCount(count+1);}}/>
+                        getSchoolList();}}/>
                 </span>
 
 

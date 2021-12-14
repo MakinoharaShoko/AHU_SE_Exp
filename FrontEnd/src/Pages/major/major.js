@@ -7,9 +7,6 @@ import Delete from "../../Components/Delete/Delete";
 
 const Major = (props)=>{
     const [count,setCount] = useState(0);
-    useEffect(()=>{
-        getMajorList();
-    })
     if(count === 0){
         getMajorList();
     }
@@ -27,7 +24,7 @@ const Major = (props)=>{
                 <span>
                     <a onClick={()=>{gotoClassList(runtime.majorList[majorListKey].ID);}}>查看</a>
                     <Delete confirm={()=>{deleteOne('major', runtime.majorList[majorListKey].ID)
-                        setCount(count+1);}}/>
+                        getMajorList();}}/>
                 </span>
 
             } style={{ width: 300 }} className={"singleSchoolInfo"}>
