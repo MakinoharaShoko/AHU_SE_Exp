@@ -1,5 +1,5 @@
 //initialize
-const Port = 80;//设置端口号，一般是3000
+const Port = 3001;//设置端口号，一般是3000
 const express = require('express');
 const { fstat } = require('fs');
 const app = express();
@@ -9,7 +9,7 @@ var MongoClient = require('mongodb').MongoClient;
 process.env.PORT = Port;
 
 app.use(express.static('public'));//allow browser access resources
-app.use(cors());//允许跨域访问
+// app.use(cors());//允许跨域访问
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
@@ -24,7 +24,11 @@ process.on('unhandledRejection',function(err,promise){}) //监听Promise没有�
 
 const MongoUrl = "mongodb://localhost:27017/";
 
-app.post('/getinfo',(req,res)=>{
+app.get('/api/',(req,res)=>{
+    res.send('Sever OK!')
+})
+
+app.post('/api/getinfo',(req,res)=>{
     let table =req.body.table;
     let ID=req.body.ID;
     let r={};
@@ -154,7 +158,7 @@ app.post('/getinfo',(req,res)=>{
     }
 })
 
-app.post('/upsert/*',(req,res)=>{//upsert包含ID  *为table
+app.post('/api/upsert/*',(req,res)=>{//upsert包含ID  *为table
     let url = req.url;
     let urlArray = url.split('/');
     let table=urlArray[2];
@@ -172,7 +176,7 @@ app.post('/upsert/*',(req,res)=>{//upsert包含ID  *为table
     })
 })
 
-app.post('/delete',(req,res)=>{//body包含ID,table
+app.post('/api/delete',(req,res)=>{//body包含ID,table
     let table =req.body.table;
     let ID=req.body.ID;
     let returnMessage ={};
@@ -291,7 +295,7 @@ app.post('/delete',(req,res)=>{//body包含ID,table
     }
 })
 
-app.get('/getAllSchoolID',(req,res)=>{
+app.get('/api/getAllSchoolID',(req,res)=>{
     MongoClient.connect(MongoUrl,(err,db)=>{
         if(err) throw err;
         let dbo = db.db('StuStatus');
