@@ -10,7 +10,7 @@ let runtime ={
     studentList:[]
 }
 
-runtime.host=``
+runtime.host=`/api`
 
 function setPostBody(body){
     let flag = true;
