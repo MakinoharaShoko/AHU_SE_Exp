@@ -24,11 +24,11 @@ process.on('unhandledRejection',function(err,promise){}) //监听Promise没有�
 
 const MongoUrl = "mongodb://localhost:27017/";
 
-app.get('/api/',(req,res)=>{
+app.get('/',(req,res)=>{
     res.send('Sever OK!')
 })
 
-app.post('/api/getinfo',(req,res)=>{
+app.post('/getinfo',(req,res)=>{
     let table =req.body.table;
     let ID=req.body.ID;
     let r={};
@@ -158,7 +158,7 @@ app.post('/api/getinfo',(req,res)=>{
     }
 })
 
-app.post('/api/upsert/*',(req,res)=>{//upsert包含ID  *为table
+app.post('/upsert/*',(req,res)=>{//upsert包含ID  *为table
     let url = req.url;
     let urlArray = url.split('/');
     let table=urlArray[2];
@@ -176,7 +176,7 @@ app.post('/api/upsert/*',(req,res)=>{//upsert包含ID  *为table
     })
 })
 
-app.post('/api/delete',(req,res)=>{//body包含ID,table
+app.post('/delete',(req,res)=>{//body包含ID,table
     let table =req.body.table;
     let ID=req.body.ID;
     let returnMessage ={};
@@ -295,7 +295,7 @@ app.post('/api/delete',(req,res)=>{//body包含ID,table
     }
 })
 
-app.get('/api/getAllSchoolID',(req,res)=>{
+app.get('/getAllSchoolID',(req,res)=>{
     MongoClient.connect(MongoUrl,(err,db)=>{
         if(err) throw err;
         let dbo = db.db('StuStatus');
