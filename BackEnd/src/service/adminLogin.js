@@ -8,7 +8,7 @@ const getToken = () => {
 }
 
 const login = async (account, password,) => {
-    const verify = new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         MongoClient.connect(MongoUrl, (err, db) => {
             if (err) throw err;
             const dbo = db.db('StuStatus');
@@ -16,8 +16,8 @@ const login = async (account, password,) => {
                 let correctPassword = res[0]['password'];
                 if (correctPassword === password) {
                     let token = getToken();
-                    dbo.collection('tokenList').insertOne({token: token},(err,result)=>{
-                        if(err) throw err;
+                    dbo.collection('tokenList').insertOne({token: token}, (err, result) => {
+                        if (err) throw err;
                         db.close();
                         resolve(token);
                     });
@@ -26,8 +26,7 @@ const login = async (account, password,) => {
                 }
             })
         })
-    })
-    return verify;
+    });
 }
 
 module.exports = login;
