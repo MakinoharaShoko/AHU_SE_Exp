@@ -5,13 +5,14 @@ import {runtime} from "../Controller/runtime";
 import Major from "./major/major";
 import Class from "./class/class";
 import Student from "./student/student";
-import {AddOne, Return} from "@icon-park/react";
+import {AddOne, Refresh, Return} from "@icon-park/react";
 import Insert from "../Components/Insert/Insert";
 import {Button, Input} from "antd";
 import login from "../Controller/service";
 import Image from '../assets/background.png'
 
 const Index = ()=>{
+    const [ref,setRef] = useState(0);
     const [loginStatus,setLoginStatus] = useState('none');
     const [currentPage,setCurrentPage] = useState(runtime.currentPage);
     const [addOn,setAddOn] = useState(false);
@@ -69,6 +70,14 @@ const Index = ()=>{
             </div>
             <div className={"topButton"} onClick={add}>
                 <AddOne theme="outline" size="30" fill="#333"/>
+            </div>
+            <div className={"topButton"} onClick={()=>{
+                if(ref===0){
+                    setRef(1);
+                }else
+                    setRef(0);
+            }}>
+                <Refresh theme="outline" size="30" fill="#333"/>
             </div>
             <div className={'topLabel'}>
                 {showLabel}
