@@ -22,7 +22,7 @@ const School = (props)=>{
             }
             let tempDiv = <Card title={runtime.schoolList[i].Name} extra={
                 <span>
-                    <a onClick={()=>{gotoMajor(runtime.schoolList[i].ID)}}>查看</a>
+                    <a onClick={()=>{gotoMajor(runtime.schoolList[i].ID,runtime.schoolList[i].Name)}}>查看</a>
                     <Delete confirm={()=>{deleteOne('school', runtime.schoolList[i].ID)
                         getSchoolList();}}/>
                 </span>
@@ -50,7 +50,8 @@ const School = (props)=>{
         }
     }
 
-    function gotoMajor(schoolID){
+    function gotoMajor(schoolID,schoolName){
+        runtime.currentLabel.push(schoolName);
         runtime.currentPage = 'major';
         console.log(runtime.currentPage);
         runtime.currentSchool = schoolID;

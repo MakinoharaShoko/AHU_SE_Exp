@@ -7,7 +7,9 @@ let runtime ={
     schoolList:[],
     majorList:[],
     classList:[],
-    studentList:[]
+    studentList:[],
+    currentLabel:['学院列表'],
+    loginStatus:'none'
 }
 
 runtime.host=`/api-express`

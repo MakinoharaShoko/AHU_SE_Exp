@@ -21,7 +21,7 @@ const Class = (props)=>{
             }
             let temp = <Card title={runtime.classList[classListKey].Name} extra={
                 <span>
-                <a onClick={()=>{gotoStudentList(runtime.classList[classListKey].ID)}}>查看</a>
+                <a onClick={()=>{gotoStudentList(runtime.classList[classListKey].ID,runtime.classList[classListKey].Name)}}>查看</a>
                 <Delete confirm={()=>{deleteOne('class', runtime.classList[classListKey].ID)
                     getClassList();}}/>
                 </span>
@@ -49,7 +49,8 @@ const Class = (props)=>{
         }
     }
 
-    function gotoStudentList(classID){
+    function gotoStudentList(classID,className){
+        runtime.currentLabel.push(className)
         runtime.currentPage = 'student';
         runtime.currentClass = classID;
         props.setCurrentPage('student');

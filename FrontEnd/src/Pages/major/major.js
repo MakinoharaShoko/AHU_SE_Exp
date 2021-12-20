@@ -22,7 +22,7 @@ const Major = (props)=>{
             }
             let temp = <Card title={runtime.majorList[majorListKey].Name} extra={
                 <span>
-                    <a onClick={()=>{gotoClassList(runtime.majorList[majorListKey].ID);}}>查看</a>
+                    <a onClick={()=>{gotoClassList(runtime.majorList[majorListKey].ID,runtime.majorList[majorListKey].Name);}}>查看</a>
                     <Delete confirm={()=>{deleteOne('major', runtime.majorList[majorListKey].ID)
                         getMajorList();}}/>
                 </span>
@@ -51,7 +51,8 @@ const Major = (props)=>{
         }
     }
 
-    function gotoClassList(majorID){
+    function gotoClassList(majorID,majorName){
+        runtime.currentLabel.push(majorName);
         runtime.currentPage = 'class';
         runtime.currentMajor = majorID;
         props.setCurrentPage('class');
